@@ -26,6 +26,21 @@ from scenic.train_lib import trainers
 
 FLAGS = flags.FLAGS
 
+import requests
+import os
+if 'TPU_DRIVER_MODE' not in globals():
+  url = 'http://' + os.environ['COLAB_TPU_ADDR'].split(':')[0] + ':8475/requestversion/tpu_driver_nightly'
+  resp = requests.post(url)
+  TPU_DRIVER_MODE = 1
+
+# TPU driver as backend for JAX
+from jax.config import config
+import jax
+config.FLAGS.jax_xla_backend = "tpu_driver"
+config.FLAGS.jax_backend_target = "grpc://" + os.environ['COLAB_TPU_ADDR']
+print(config.FLAGS.jax_backend_target)
+print(jax.devices())
+
 
 def main(rng: jnp.ndarray, config: ml_collections.ConfigDict, workdir: str,
          writer: metric_writers.MetricWriter):
