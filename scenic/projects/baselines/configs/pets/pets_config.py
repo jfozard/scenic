@@ -23,7 +23,7 @@ def get_config():
   config.model_name = 'unet_segmentation'
   config.model = ml_collections.ConfigDict()
   # config.model.block_size = (64, 128, 256, 512, 1024, 1024, 1024)
-  config.model.block_size = (64, 128, 256, 512, 1024, 1024)
+  config.model.block_size = (64, 128, 256, 512)#, 1024, 1024)
   config.model.use_batch_norm = True
   config.model.padding = 'SAME'
 
