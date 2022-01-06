@@ -128,7 +128,7 @@ def initialize_model(
   # Count gflops:
   count_flops = config.get('count_flops',
                            ml_collections.ConfigDict({'count_flops': True}))
-  if count_flops:
+  if False: #count_flops:
     variables = {'params': init_params, **init_model_state}
     flops = debug_utils.compute_flops(
         flax_model_apply_fn=functools.partial(
