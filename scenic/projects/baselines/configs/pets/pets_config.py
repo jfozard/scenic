@@ -15,9 +15,9 @@ def get_config():
   config.experiment_name = 'pets'
 
   # Dataset.
-  config.dataset_name = 'oxford_iiit_pets'
+  config.dataset_name = 'oxford_pets'
   config.dataset_configs = ml_collections.ConfigDict()
-  config.dataset_configs.target_size = (128, 256)  # Image size.
+  config.dataset_configs.target_size = (224, 224)  # Image size.
 
   # Model.
   config.model_name = 'unet_segmentation'
